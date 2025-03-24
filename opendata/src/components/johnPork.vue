@@ -14,7 +14,7 @@
           <div class="flex justify-around space-x-4">
             <button
               @click="acceptCall"
-              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 hover:cursor-not-allowed"
               :disabled = "true"
             >
               Accept
