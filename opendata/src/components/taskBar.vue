@@ -9,19 +9,22 @@ import { RouterLink } from 'vue-router'
           class="pi pi-home text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
         ></i>
       </RouterLink>
-      <RouterLink to = "/graphs">
-
-          <i
-            class="pi pi-chart-line text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
-          ></i>
+      <RouterLink to="/graphs">
+        <i
+          class="pi pi-chart-line text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
+        ></i>
       </RouterLink>
-    
 
       <RouterLink to="/null">
-          <i
+        <i
           class="pi pi-user text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
-          ></i>
-        </RouterLink>
+        ></i>
+      </RouterLink>
+      <RouterLink to="/cards">
+        <i
+          class="pi pi-id-card text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
+        ></i>
+      </RouterLink>
     </div>
   </div>
 </template>

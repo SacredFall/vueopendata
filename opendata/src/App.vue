@@ -2,7 +2,6 @@
 import { RouterView } from 'vue-router'
 import taskBar from '@/components/taskBar.vue'
 import johnPork from '@/components/johnPork.vue'
-import BarChart from '@/components/charts/BarChart.vue'
 </script>
 
 <template>
