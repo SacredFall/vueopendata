@@ -46,8 +46,8 @@
             <button @click="continueDialogue" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
               Yes
             </button>
-            <button @click="showPopup = false" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
-              No
+            <button @click="stopJohnPork" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+              No(John Pork Won't call again)
             </button>
           </div>
         </div>
@@ -69,6 +69,8 @@
   const showDialogue = ref(false)
   const typeSound = new Audio('/typeSound.mp3')
   const showPopup = ref(false)
+  const johnPorkStopped = ref(false)
+  const warningAudio = new Audio('/warning.mp3')
   
   const acceptCall = () => {
     showModal.value = false
@@ -95,42 +97,46 @@
   }
   
   const showRandomModal = () => {
-    const randomTime = Math.floor(Math.random() * 7700) 
+    if (johnPorkStopped.value) return
+    const randomTime = Math.floor(Math.random() * 2000) 
     setTimeout(() => {
-      showModal.value = true
-      ringTone()
+      if (!johnPorkStopped.value) {
+        showModal.value = true
+        ringTone()
+      }
     }, randomTime)
   }
   
   const handleTooManyDeclines = () => {
-    document.body.style.backgroundColor = 'red'
-    buttonsDisabled.value = true
-    setTimeout(() => {
-      buttonsDisabled.value = false
-      document.body.style.backgroundColor = ''
-    }, 20000)
-    const warningAudio = new Audio('/warning.mp3')
-    warningAudio.loop = true
-    warningAudio.play()
-    showDialogueMessage('Warning: Too many declines!')
-    setTimeout(() => {
-      requestFullScreen() 
-      showJumpScare.value = true
-      const jumpScareAudio = audio.value
-      jumpScareAudio.src = '/jumpScareSound.mp3'
-      jumpScareAudio.play()
+  document.body.style.backgroundColor = 'red'
+  buttonsDisabled.value = true
+  setTimeout(() => {
+    buttonsDisabled.value = false
+    document.body.style.backgroundColor = ''
+  }, 20000)
 
+  // Use the existing warningAudio reference
+  warningAudio.loop = true
+  warningAudio.play()
+
+  showDialogueMessage('Warning: Too many declines!')
+  setTimeout(() => {
+    requestFullScreen() 
+    showJumpScare.value = true
+    const jumpScareAudio = audio.value
+    jumpScareAudio.src = '/jumpScareSound.mp3'
+    jumpScareAudio.play()
+
+    setTimeout(() => {
+      showAdditionalJumpScare.value = true
+      additionalJumpScareAudio.value.src = '/ascending-jumpscare.mp3'
+      additionalJumpScareAudio.value.play()
       setTimeout(() => {
-        showAdditionalJumpScare.value = true
-        const additionalJumpScareAudio = new Audio('/ascending-jumpscare.mp3')
-        additionalJumpScareAudio.play()
-        setTimeout(() => {
-        
-          displayDialogue('244 Harvest A')
-        }, 5000)
+        displayDialogue('244 Harvest A')
       }, 5000)
     }, 5000)
-  }
+  }, 5000)
+}
   
   const displayDialogue = (text) => {
     dialogueText.value = '' 
@@ -157,6 +163,19 @@
     showPopup.value = false
     displayDialogue('Recognize that number? | Staten Island, NY 10310')
   }
+  
+  const stopJohnPork = () => {
+  showPopup.value = false
+  johnPorkStopped.value = true
+  warningAudio.loop = false
+  warningAudio.pause()
+  document.body.style.backgroundColor = ''
+  buttonsDisabled.value = false
+  showModal.value = false
+  showJumpScare.value = false
+  showAdditionalJumpScare.value = false
+  showDialogue.value = false
+}
   
   const showDialogueMessage = (message) => {
     typeSound.play()

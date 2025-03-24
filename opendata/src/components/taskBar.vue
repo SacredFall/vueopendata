@@ -22,11 +22,6 @@ import { RouterLink } from 'vue-router'
           class="pi pi-user text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
           ></i>
         </RouterLink>
-        <RouterLink to="/about">
-          <i
-            class="pi pi-info-circle text-white text-2xl transition-transform transform hover:scale-125 hover:shadow-lg hover:bg-gray-500 p-3 rounded-md"
-          ></i>
-        </RouterLink>
     </div>
   </div>
 </template>
