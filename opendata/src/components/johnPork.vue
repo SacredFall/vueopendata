@@ -95,7 +95,7 @@
   }
   
   const showRandomModal = () => {
-    const randomTime = Math.floor(Math.random() * 5000) 
+    const randomTime = Math.floor(Math.random() * 7700) 
     setTimeout(() => {
       showModal.value = true
       ringTone()
