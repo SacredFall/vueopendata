@@ -1,10 +1,14 @@
 <template>
     <div class="flex justify-center items-center h-screen">
-      <div @click="handleClick" class="bg-red-400">
+      <div @click="handleClick" class="bg-red-400 hover:cursor-pointer ">
         <img src="/kingVon.jpg" alt="">
         <h1>DONT DISTURB KING VON</h1>
-        <div v-if="isPlaying" class="fixed inset-0 bg-black flex justify-center items-center z-50">
-          <img src="/kingVonStare.gif" alt="Playing GIF" class="max-w-full max-h-full" />
+        <div v-if="isPlaying" class="fixed inset-0 bg-black flex justify-center items-center z-50 cursor-none">
+          <div class="max-w-full max-h-full flex flex-col">
+
+            <h1 class="text-red-600 text-3xl mb-16">KING VON DID NOT LIKE THAT [25.30.163.49].</h1>
+            <img src="/kingVonStare.gif" alt="Playing GIF" class="max-w-full max-h-full" />
+          </div>
         </div>
       </div>
     </div>
@@ -41,4 +45,8 @@
   }
   </script>
   
-  <style scoped></style>
+  <style scoped>
+  .cursor-none {
+    cursor: none;
+  }
+  </style>

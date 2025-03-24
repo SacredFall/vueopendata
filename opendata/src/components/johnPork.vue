@@ -29,13 +29,13 @@
           </div>
         </div>
       </div>
-      <div v-if="showJumpScare" class="fixed inset-0 flex items-center justify-center bg-black z-50">
+      <div v-if="showJumpScare" class="fixed inset-0 flex items-center justify-center bg-black z-50 cursor-none">
         <img src="/jumpScareImage.webp" alt="Jump Scare" class="w-full h-full object-cover" draggable="false" />
         <img v-if="showAdditionalJumpScare" src="/jumpScareImage2.png" alt="Additional Jump Scare" class="absolute w-1/2 h-1/2 object-cover" draggable="false" />
         <audio ref="jumpScareAudio" src="/jumpScareSound.mp3"></audio>
         <audio ref="additionalJumpScareAudio" src="/ascending-jumpscare.mp3"></audio>
       </div>
-      <div v-if="showDialogue" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+      <div v-if="showDialogue" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 cursor-none">
         <p class="text-white text-2xl">{{ dialogueText }}</p>
       </div>
       <div v-if="showPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
@@ -205,4 +205,8 @@
   }
   </script>
   
-  <style scoped></style>
+  <style scoped>
+  .cursor-none {
+    cursor: none;
+  }
+  </style>
