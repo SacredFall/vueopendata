@@ -162,7 +162,7 @@ const handleTooManyDeclines = () => {
       additionalJumpScareAudio.value.src = '/ascending-jumpscare.mp3'
       additionalJumpScareAudio.value.play()
       setTimeout(() => {
-        displayDialogue('244 Harvest A')
+        displayDialogue('244 ')
       }, 5000)
     }, 5000)
   }, 5000)
@@ -178,7 +178,7 @@ const displayDialogue = (text) => {
       const sound = new Audio('/typeSound.mp3')
       sound.play()
       index++
-      if (dialogueText.value === '244 Harvest') {
+      if (dialogueText.value === '244') {
         clearInterval(interval)
         showPopup.value = true
       }
@@ -190,7 +190,7 @@ const displayDialogue = (text) => {
 
 const continueDialogue = () => {
   showPopup.value = false
-  displayDialogue('Recognize that number? | Staten Island, NY 10310')
+  displayDialogue('Recognise it?')
 }
 
 const stopJohnPork = () => {
